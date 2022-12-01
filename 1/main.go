@@ -8,7 +8,10 @@ import (
 )
 
 func main() {
-	content := get_file_content("/1/input.txt")
+	cli_args := os.Args
+	file_path := cli_args[1]
+
+	content := get_file_content(file_path)
 
 	elfs := strings.Split(content, "\n\n")
 
@@ -20,12 +23,7 @@ func main() {
 }
 
 func get_file_content(file_path string) string {
-	directory, err := os.Getwd()
-	if err != nil {
-		panic(err)
-	}
-
-	file_content, err := os.ReadFile(directory + file_path)
+	file_content, err := os.ReadFile(file_path)
 	if err != nil {
 		panic(err)
 	}
