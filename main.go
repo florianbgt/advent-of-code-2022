@@ -42,10 +42,16 @@ func main() {
 		"25": solvers.Solve25,
 	}
 
-	for i := 1; i <= 7; i++ {
+	for i := 1; i <= 25; i++ {
 		str_i := strconv.Itoa(i)
+
 		file_path := work_dir + "/" + "inputs/" + str_i + ".txt"
 		content := get_file_content(file_path)
+
+		if content == "" {
+			continue
+		}
+
 		fmt.Println("\nSolving puzzle " + str_i + "...")
 		solvers_map[str_i](content)
 		fmt.Println("Solved puzzle " + str_i + "!")
