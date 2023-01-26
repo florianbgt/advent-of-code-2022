@@ -1,17 +1,12 @@
-package main
+package solvers
 
 import (
 	"fmt"
-	"os"
 	"strconv"
 	"strings"
 )
 
-func main() {
-	cli_args := os.Args
-	file_path := cli_args[1]
-
-	content := get_file_content(file_path)
+func Solve1(content string) {
 
 	elfs := strings.Split(content, "\n\n")
 
@@ -19,17 +14,7 @@ func main() {
 
 	sum_calories := get_total_calories_for_x_efs(elfs, number_of_elfs)
 
-	fmt.Println("\nThe sum of the calories of the top " + strconv.Itoa(number_of_elfs) + " elves with the most calories is " + strconv.Itoa(sum_calories) + ".")
-}
-
-func get_file_content(file_path string) string {
-	file_content, err := os.ReadFile(file_path)
-	if err != nil {
-		panic(err)
-	}
-	content := string(file_content)
-
-	return content
+	fmt.Println("The sum of the calories of the top " + strconv.Itoa(number_of_elfs) + " elves with the most calories is " + strconv.Itoa(sum_calories) + ".")
 }
 
 func get_max_calories_from_elfs(elfs []string) (int, int) {

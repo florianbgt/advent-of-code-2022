@@ -1,17 +1,12 @@
-package main
+package solvers
 
 import (
 	"fmt"
-	"os"
 	"strconv"
 	"strings"
 )
 
-func main() {
-	cli_args := os.Args
-	file_path := cli_args[1]
-	content := get_file_content(file_path)
-
+func Solve4(content string) {
 	pairs := strings.Split(content, "\n")
 
 	list_of_pairs := get_list_of_pairs(pairs)
@@ -20,17 +15,7 @@ func main() {
 	count_overlaped := get_overlaped_count(list_of_pairs)
 
 	fmt.Println("There is " + strconv.Itoa(count_duplicated) + " duplicates")
-	fmt.Println("There is " + strconv.Itoa(count_overlaped) + " overlapes")
-}
-
-func get_file_content(file_path string) string {
-	file_content, err := os.ReadFile(file_path)
-	if err != nil {
-		panic(err)
-	}
-	content := string(file_content)
-
-	return content
+	fmt.Println("There is " + strconv.Itoa(count_overlaped) + " overlaps")
 }
 
 func get_list_of_pairs(pairs []string) [][]string {

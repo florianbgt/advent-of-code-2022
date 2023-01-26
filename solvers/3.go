@@ -1,18 +1,13 @@
-package main
+package solvers
 
 import (
 	"fmt"
 	"math"
-	"os"
 	"strconv"
 	"strings"
 )
 
-func main() {
-	cli_args := os.Args
-	file_path := cli_args[1]
-	content := get_file_content(file_path)
-
+func Solve3(content string) {
 	rucksacks := strings.Split(content, "\n")
 	sum_priorities := get_priority_amount_from_rucksacks(rucksacks)
 	fmt.Println("Sum of priority in each rucksacks is " + strconv.Itoa(sum_priorities))
@@ -20,16 +15,6 @@ func main() {
 	groups := get_groups(rucksacks)
 	sum_priorities = get_priority_amount_from_groups(groups)
 	fmt.Println("Sum of priority in each groups is " + strconv.Itoa(sum_priorities))
-}
-
-func get_file_content(file_path string) string {
-	file_content, err := os.ReadFile(file_path)
-	if err != nil {
-		panic(err)
-	}
-	content := string(file_content)
-
-	return content
 }
 
 func get_compartments(items string) (string, string) {

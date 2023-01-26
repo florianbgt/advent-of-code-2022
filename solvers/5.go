@@ -1,17 +1,12 @@
-package main
+package solvers
 
 import (
 	"fmt"
-	"os"
 	"strconv"
 	"strings"
 )
 
-func main() {
-	cli_args := os.Args
-	file_path := cli_args[1]
-	content := get_file_content(file_path)
-
+func Solve5(content string) {
 	content_list := strings.Split(content, "\n\n")
 
 	initial_position := content_list[0]
@@ -43,16 +38,6 @@ func main() {
 	}
 
 	fmt.Println("9001 final state: " + last_chars_stacks2)
-}
-
-func get_file_content(file_path string) string {
-	file_content, err := os.ReadFile(file_path)
-	if err != nil {
-		panic(err)
-	}
-	content := string(file_content)
-
-	return content
 }
 
 func get_stacks(list_initial_position []string) [][]string {

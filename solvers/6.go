@@ -1,15 +1,12 @@
-package main
+package solvers
 
 import (
 	"fmt"
-	"os"
 	"strconv"
 )
 
-func main() {
-	cli_args := os.Args
-	file_path := cli_args[1]
-	message := get_file_content(file_path)
+func Solve6(content string) {
+	message := content
 
 	i := get_first_duplicate_index(4, message)
 
@@ -17,16 +14,6 @@ func main() {
 
 	fmt.Println("first duplicate happen at character " + strconv.Itoa(i))
 	fmt.Println("first duplicate happen at character " + strconv.Itoa(j))
-}
-
-func get_file_content(file_path string) string {
-	file_content, err := os.ReadFile(file_path)
-	if err != nil {
-		panic(err)
-	}
-	content := string(file_content)
-
-	return content
 }
 
 func get_first_duplicate_index(num int, message string) int {

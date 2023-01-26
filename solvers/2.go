@@ -1,34 +1,18 @@
-package main
+package solvers
 
 import (
 	"fmt"
-	"os"
 	"strconv"
 	"strings"
 )
 
-func main() {
-	cli_args := os.Args
-	file_path := cli_args[1]
-
-	content := get_file_content(file_path)
-
+func Solve2(content string) {
 	rounds := strings.Split(content, "\n")
 
 	total_score_if_sign, total_score_if_outcome := get_total_score(rounds)
 
 	fmt.Println("The total score is " + strconv.Itoa(total_score_if_sign) + " if sign.")
 	fmt.Println("The total score is " + strconv.Itoa(total_score_if_outcome) + " if outcome.")
-}
-
-func get_file_content(file_path string) string {
-	file_content, err := os.ReadFile(file_path)
-	if err != nil {
-		panic(err)
-	}
-	content := string(file_content)
-
-	return content
 }
 
 func get_score_from_sign(opponent_sign string, sign string) int {
